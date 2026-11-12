@@ -1,4 +1,56 @@
+import { useState } from "react";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 function Projects() {
+  const [projectsPaginationElement, setProjectsPaginationElement] = useState<HTMLDivElement | null>(null);
+  const [earlierWorkPaginationElement, setEarlierWorkPaginationElement] = useState<HTMLDivElement | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState(-1);
+  const projectImages = [
+  {
+    src: "/assets/img/projects/movie-search-with-react-query.webp",
+    alt: "Movie Search with React Query",
+},
+  {
+    src: "/assets/img/projects/movie-search.webp",
+    alt: "Movie Search",
+  },
+  {
+    src: "/assets/img/projects/cafe-feedback.webp",
+    alt: "Café Feedback",
+  },
+  {
+    src: "/assets/img/projects/the-sweet-workshop.webp",
+    alt: "The Sweet Workshop",
+  },
+  {
+    src: "/assets/img/projects/elation.webp",
+    alt: "Elation Character Creator",
+  },
+  {
+    src: "/assets/img/projects/nft-platform.webp",
+    alt: "NFT for Music",
+  },
+  {
+    src: "/assets/img/projects/appello-website.webp",
+    alt: "Appello",
+  },
+  {
+    src: "/assets/img/projects/barbershop.webp",
+    alt: "Barbershop",
+  },
+  {
+    src: "/assets/img/projects/covid-dashboard.webp",
+    alt: "Covid",
+  },
+];
+
   return (
     <section id="projects">
       <div data-aos="fade-up" data-aos-duration="1500" className="card mt-3 zoomInOut">
@@ -9,13 +61,13 @@ function Projects() {
         <div className="card-body p-4">
           <h6 className="text-primary fw-bold mb-3"><i className="fa-solid fa-code me-1"></i>JavaScript Projects</h6>
 
-          <div className="swiper">
-            <div className="swiper-wrapper">
-              <div className="swiper-slide">
-                <article className="text-center px-2">
+          {projectsPaginationElement && (
+            <Swiper modules={[Navigation, Pagination]} spaceBetween={30} slidesPerView={1} navigation pagination={{ clickable: true, el: projectsPaginationElement }} loop autoHeight className="projects-swiper">
+            <SwiperSlide>
+              <article className="text-center px-2">
                   <h4 className="text-center p-0 m-2">Movie Search with React Query</h4>
                   <p className="d-flex justify-content-center align-items-center flex-wrap gap-2"><span className="badge rounded-pill border border-primary text-primary fw-normal">Learning Project</span></p>
-                  <a className="m-2" href="/assets/img/projects/movie-search-with-react-query.webp" data-lightbox="roadtrip" data-title="Movie Search with React Query">
+                  <a className="m-2" href="/assets/img/projects/movie-search-with-react-query.webp" onClick={(e) => { e.preventDefault(); setLightboxIndex(1); }}>
                     <img className="img-fluid thumb rounded mb-2" width="150" height="150" src="/assets/img/projects/movie-search-with-react-query.webp" alt="Movie Search with React Query" loading="lazy" />
                   </a>
                   <p className="mb-2"><strong>Summary:</strong> Search movies with cached queries and pagination.</p>
@@ -31,14 +83,14 @@ function Projects() {
                     <a className="btn btn-primary w-50 shadow-sm zoomInOut" href="https://04-react-query-two-ruby.vercel.app" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-laptop-code me-1"></i>Live Demo</a>
                     <a className="btn btn-outline-primary w-50 shadow-sm zoomInOut" href="https://github.com/TempPolarBear/04-react-query" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-code me-1"></i>Source Code</a>
                   </div>
-                </article>
-              </div>
+              </article>
+            </SwiperSlide>
 
-              <div className="swiper-slide">
+              <SwiperSlide>
                 <article className="text-center px-2">
                   <h4 className="text-center p-0 m-2">Movie Search</h4>
                   <p className="d-flex justify-content-center align-items-center flex-wrap gap-2"><span className="badge rounded-pill border border-primary text-primary fw-normal">Learning Project</span></p>
-                  <a className="m-2" href="/assets/img/projects/movie-search.webp" data-lightbox="roadtrip" data-title="Movie Search">
+                  <a className="m-2" href="/assets/img/projects/movie-search.webp" onClick={(e) => { e.preventDefault(); setLightboxIndex(1); }}>
                     <img className="img-fluid thumb rounded mb-2" width="150" height="150" src="/assets/img/projects/movie-search.webp" alt="Movie Search" loading="lazy" />
                   </a>
                   <p className="mb-2"><strong>Summary:</strong> Search for movies using the TMDB API.</p>
@@ -55,13 +107,13 @@ function Projects() {
                     <a className="btn btn-outline-primary w-50 shadow-sm zoomInOut" href="https://github.com/TempPolarBear/03_react_movies" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-code me-1"></i>Source Code</a>
                   </div>
                 </article>
-              </div>
+              </SwiperSlide>
 
-              <div className="swiper-slide">
+              <SwiperSlide>
                 <article className="text-center px-2">
                   <h4 className="text-center p-0 m-2">Café Feedback</h4>
                   <p className="d-flex justify-content-center align-items-center flex-wrap gap-2"><span className="badge rounded-pill border border-primary text-primary fw-normal">Learning Project</span></p>
-                  <a className="m-2" href="/assets/img/projects/cafe-feedback.webp" data-lightbox="roadtrip" data-title="Café Feedback">
+                  <a className="m-2" href="/assets/img/projects/cafe-feedback.webp" onClick={(e) => { e.preventDefault(); setLightboxIndex(2); }}>
                     <img className="img-fluid thumb rounded mb-2" width="150" height="150" src="/assets/img/projects/cafe-feedback.webp" alt="Café Feedback" loading="lazy" />
                   </a>
                   <p className="mb-2"><strong>Summary:</strong> Record café feedback and view vote totals.</p>
@@ -78,16 +130,16 @@ function Projects() {
                     <a className="btn btn-outline-primary w-50 shadow-sm zoomInOut" href="https://github.com/TempPolarBear/02_react_cafe" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-code me-1"></i>Source Code</a>
                   </div>
                 </article>
-              </div>
+              </SwiperSlide>
 
-              <div className="swiper-slide">
+              <SwiperSlide>
                 <article className="text-center px-2">
                   <h4 className="text-center p-0 m-2">The Sweet Workshop</h4>
                   <p className="d-flex justify-content-center align-items-center flex-wrap gap-2">
                     <span className="badge rounded-pill border border-primary text-primary fw-normal">Team Project</span>
                     <span className="badge rounded-pill border border-primary text-primary fw-normal">Learning Project</span>
                   </p>
-                  <a className="m-2" href="/assets/img/projects/the-sweet-workshop.webp" data-lightbox="roadtrip" data-title="The Sweet Workshop">
+                  <a className="m-2" href="/assets/img/projects/the-sweet-workshop.webp" onClick={(e) => { e.preventDefault(); setLightboxIndex(3); }}>
                     <img className="img-fluid thumb rounded mb-2" width="150" height="150" src="/assets/img/projects/the-sweet-workshop.webp" alt="The Sweet Workshop team project preview" loading="lazy" />
                   </a>
                   <p className="mb-2"><strong>Summary:</strong> A team-built dessert shop with product browsing, ordering, API integration and a responsive interface.</p>
@@ -105,13 +157,10 @@ function Projects() {
                     <a className="btn btn-outline-primary w-50 shadow-sm zoomInOut" href="https://github.com/taisiiiaaa/the-sweet-workshop" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-code me-1"></i>Source Code</a>
                   </div>
                 </article>
-              </div>
-            </div>
-            <div className="swiper-pagination"></div>
-            <div className="swiper-button-prev zoomInOut"></div>
-            <div className="swiper-button-next zoomInOut"></div>
-            <div className="swiper-scrollbar"></div>
-          </div>
+              </SwiperSlide>
+            </Swiper>
+          )}
+          <div ref={setProjectsPaginationElement} className="projects-pagination swiper-pagination mt-2" />
 
           <div className="mt-4">
             <h6 className="text-primary fw-bold mb-3"><i className="fa-solid fa-gem me-1"></i>Main Project</h6>
@@ -123,7 +172,7 @@ function Projects() {
                 <span className="badge rounded-pill border border-primary text-primary fw-normal">In Development</span>
                 <span className="badge rounded-pill border border-primary text-primary fw-normal">Beta 0.1</span>
               </div>
-              <a className="m-2" href="/assets/img/projects/elation.webp" data-lightbox="roadtrip" data-title="Elation Character Creator">
+              <a className="m-2" href="/assets/img/projects/elation.webp" onClick={(e) => { e.preventDefault(); setLightboxIndex(4); }}>
                 <img className="img-fluid thumb rounded mb-2" width="150" height="150" src="/assets/img/projects/elation.webp" alt="Elation Character Creator" loading="lazy" />
               </a>
               <p className="text-body small mb-3">The project is actively evolving and will continue to be improved and expanded.</p>
@@ -145,13 +194,13 @@ function Projects() {
 
           <div className="mt-4">
             <h6 className="text-primary fw-bold mb-3"><i className="fa-solid fa-clock-rotate-left me-1"></i>Earlier Work</h6>
-            <div className="swiper">
-              <div className="swiper-wrapper">
-                <div className="swiper-slide">
+            {earlierWorkPaginationElement && (
+              <Swiper modules={[Navigation, Pagination]} spaceBetween={30} slidesPerView={1} navigation pagination={{ clickable: true, el: earlierWorkPaginationElement }} loop autoHeight className="earlier-work-swiper">
+                <SwiperSlide>
                   <div className="text-center">
                     <h4 className="p-0 m-2">NFT for Music</h4>
                     <p className="d-flex justify-content-center align-items-center flex-wrap gap-2"><span className="badge rounded-pill border border-primary text-primary fw-normal">Learning Project</span></p>
-                    <a className="m-2" href="/assets/img/projects/nft-platform.webp" data-lightbox="roadtrip" data-title="NFT for Music">
+                    <a className="m-2" href="/assets/img/projects/nft-platform.webp" onClick={(e) => { e.preventDefault(); setLightboxIndex(5); }}>
                       <img className="img-fluid thumb rounded mb-2" width="150" height="150" src="/assets/img/projects/nft-platform.webp" alt="NFT for Music" loading="lazy" />
                     </a>
                     <p className="mb-2"><strong>Summary:</strong> A layout for a music NFT platform concept.</p>
@@ -167,13 +216,13 @@ function Projects() {
                       <a className="btn btn-outline-primary w-50 shadow-sm zoomInOut" href="https://github.com/TempPolarBear/nft_for_music_creators" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-code me-1"></i>Source Code</a>
                     </div>
                   </div>
-                </div>
+                </SwiperSlide>
 
-                <div className="swiper-slide">
+                <SwiperSlide>
                   <div className="text-center">
                     <h4 className="p-0 m-2">Appello</h4>
                     <p className="d-flex justify-content-center align-items-center flex-wrap gap-2"><span className="badge rounded-pill border border-primary text-primary fw-normal">Learning Project</span></p>
-                    <a className="m-2" href="/assets/img/projects/appello-website.webp" data-lightbox="roadtrip" data-title="Appello">
+                    <a className="m-2" href="/assets/img/projects/appello-website.webp" onClick={(e) => { e.preventDefault(); setLightboxIndex(6); }}>
                       <img className="img-fluid thumb rounded mb-2" width="150" height="150" src="/assets/img/projects/appello-website.webp" alt="Appello" loading="lazy" />
                     </a>
                     <p className="mb-2"><strong>Summary:</strong> A company website layout with services, portfolio and team sections.</p>
@@ -189,13 +238,13 @@ function Projects() {
                       <a className="btn btn-outline-primary w-50 shadow-sm zoomInOut" href="https://github.com/TempPolarBear/appello" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-code me-1"></i>Source Code</a>
                     </div>
                   </div>
-                </div>
+                </SwiperSlide>
 
-                <div className="swiper-slide">
+                <SwiperSlide>
                   <div className="text-center">
                     <h4 className="p-0 m-2">Barbershop</h4>
                     <p className="d-flex justify-content-center align-items-center flex-wrap gap-2"><span className="badge rounded-pill border border-primary text-primary fw-normal">Learning Project</span></p>
-                    <a className="m-2" href="/assets/img/projects/barbershop.webp" data-lightbox="roadtrip" data-title="Barbershop">
+                    <a className="m-2" href="/assets/img/projects/barbershop.webp" onClick={(e) => { e.preventDefault(); setLightboxIndex(7); }}>
                       <img className="img-fluid thumb rounded mb-2" width="150" height="150" src="/assets/img/projects/barbershop.webp" alt="Barbershop" loading="lazy" />
                     </a>
                     <p className="mb-2"><strong>Summary:</strong> A barbershop layout with services, prices and a gallery.</p>
@@ -211,13 +260,13 @@ function Projects() {
                       <a className="btn btn-outline-primary w-50 shadow-sm zoomInOut" href="https://github.com/TempPolarBear/barbershop" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-code me-1"></i>Source Code</a>
                     </div>
                   </div>
-                </div>
+                </SwiperSlide>
 
-                <div className="swiper-slide">
+                <SwiperSlide>
                   <div className="text-center">
                     <h4 className="p-0 m-2">Covid</h4>
                     <p className="d-flex justify-content-center align-items-center flex-wrap gap-2"><span className="badge rounded-pill border border-primary text-primary fw-normal">Learning Project</span></p>
-                    <a className="m-2" href="/assets/img/projects/covid-dashboard.webp" data-lightbox="roadtrip" data-title="Covid">
+                    <a className="m-2" href="/assets/img/projects/covid-dashboard.webp" onClick={(e) => { e.preventDefault(); setLightboxIndex(8); }}>
                       <img className="img-fluid thumb rounded mb-2" width="150" height="150" src="/assets/img/projects/covid-dashboard.webp" alt="Covid" loading="lazy" />
                     </a>
                     <p className="mb-2"><strong>Summary:</strong> An informational COVID-19 resource layout.</p>
@@ -233,16 +282,14 @@ function Projects() {
                       <a className="btn btn-outline-primary w-50 shadow-sm zoomInOut" href="https://github.com/TempPolarBear/covid" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-code me-1"></i>Source Code</a>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div className="swiper-pagination"></div>
-              <div className="swiper-button-prev zoomInOut"></div>
-              <div className="swiper-button-next zoomInOut"></div>
-              <div className="swiper-scrollbar"></div>
+                </SwiperSlide>
+              </Swiper>
+            )}
+            <div ref={setEarlierWorkPaginationElement} className="earlier-work-pagination swiper-pagination mt-2" />
             </div>
           </div>
         </div>
-      </div>
+        <Lightbox open={lightboxIndex >= 0} close={() => setLightboxIndex(-1)} index={lightboxIndex} slides={projectImages}/>
     </section>
   )
 }
