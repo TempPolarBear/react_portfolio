@@ -1,5 +1,5 @@
-import Hard from "./Hard";
-import Soft from "./Soft";
+import Hard from "@/components/Skills/Hard";
+import Soft from "@/components/Skills/Soft";
 
 function Skills() { 
     return (

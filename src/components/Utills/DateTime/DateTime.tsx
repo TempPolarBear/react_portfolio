@@ -1,5 +1,6 @@
 
 import { useEffect, useRef, useState } from "react"
+import { http } from "@/services/http"
 
 type City = {
   id: number
@@ -12,7 +13,8 @@ type City = {
 type CityResponse = { results?: City[] }
 type SelectedCity = { name: string; country: string; timezone: string }
 
-function Date_Time() {
+function DateTime() {
+  const API = "https://geocoding-api.open-meteo.com/"
   const [query, setQuery] = useState("")
   const [cities, setCities] = useState<City[]>([])
   const [selected, setSelected] = useState<SelectedCity>({ name: "Odesa", country: "Ukraine", timezone: "Europe/Kyiv" })
@@ -42,8 +44,8 @@ function Date_Time() {
       setLoading(true)
 
       try {
-        const response = await fetch(
-          `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(searchQuery)}&count=8&language=en&format=json`,
+        const response = await http.get(
+          `${API}v1/search?name=${encodeURIComponent(searchQuery)}&count=8&language=en&format=json`,
           { signal: controller.signal }
         )
         if (!response.ok) throw new Error("Search failed")
@@ -134,4 +136,4 @@ function Date_Time() {
   )
 }
 
-export default Date_Time
+export default DateTime

@@ -1,9 +1,9 @@
-import Calculator from "./Calculator/Calculator"
-import Randomizer from "./Randomizer/Randomizer"
-import Date_Time from "./Date_Time/Date_Time"
-import Weather from "./Weather/Weather"
-import CurrencyConverter from "./CurrencyConverter/CurrencyConverter"
-import Prediction from "./Prediction/Prediction"
+import Calculator from "@/components/Utills/Calculator/Calculator"
+import Randomizer from "@/components/Utills/Randomizer/Randomizer"
+import Date_Time from "@/components/Utills/DateTime/DateTime"
+import Weather from "@/components/Utills/Weather/Weather"
+import CurrencyConverter from "@/components/Utills/CurrencyConverter/CurrencyConverter"
+import Prediction from "@/components/Utills/Prediction/Prediction"
 
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -54,7 +54,7 @@ function Utils() {
             </div>
             <div className="card-body">
                 {utilsPaginationElement && (
-                <Swiper modules={[Navigation, Pagination]} spaceBetween={30} slidesPerView={1} navigation pagination={{ el: utilsPaginationElement, clickable: true }} loop autoHeight className="utils-swiper" onSwiper={(swiper) => {
+                <Swiper modules={[Navigation, Pagination]} spaceBetween={30} slidesPerView={1} navigation pagination={{ el: utilsPaginationElement, clickable: true }} loop autoHeight className="utils-swiper p-2" onSwiper={(swiper) => {
                   setUtilsSwiper(swiper);
                   syncActiveSlide(swiper);
                 }} onSlideChangeTransitionEnd={syncActiveSlide}>

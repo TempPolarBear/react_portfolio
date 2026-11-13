@@ -1,5 +1,6 @@
 
 import { useEffect, useMemo, useRef, useState } from "react"
+import { http } from "@/services/http";
 
 type Currency = { iso_code: string; name: string; symbol?: string | null }
 type Rate = { rate: number; date: string; base: string; quote: string }
@@ -78,7 +79,7 @@ function CurrencyConverter() {
       setLoading(true)
 
       try {
-        const response = await fetch(`${API}/rate/${from}/${to}`, { signal: controller.signal })
+        const response = await http.get(`${API}/rate/${from}/${to}`, { signal: controller.signal })
         if (!response.ok) throw new Error("Rate request failed")
 
         const data: Rate = await response.json()

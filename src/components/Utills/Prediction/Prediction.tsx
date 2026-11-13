@@ -1,9 +1,11 @@
 
 import { useState } from "react"
+import { http } from "@/services/http"
 
 type FortuneResponse = { fortune: string }
 
 function Prediction() {
+  const API = "https://dumbapis.com/fortune"
   const [prediction, setPrediction] = useState("Your fortune is waiting...")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -15,15 +17,20 @@ function Prediction() {
     setRevealed(false)
 
     try {
-      const response = await fetch("https://dumbapis.com/fortune", { cache: "no-store" })
-      if (!response.ok) throw new Error("Request failed")
-
-      const data: FortuneResponse = await response.json()
-      if (typeof data.fortune !== "string" || !data.fortune.trim()) throw new Error("Invalid fortune")
-      setPrediction(data.fortune)
+      await http.get(API, { cache: "no-store" }).json()
+      .then(response => {
+        setPrediction((response as FortuneResponse)?.fortune)
+      }).catch(() => {
+        setError(true)
+        throw new Error("Request failed")
+      }).finally(() => {
+        setLoading(false)
+        setRevealed(true)
+      })
     } catch {
-      setPrediction("The universe is busy. Try again!")
       setError(true)
+      setLoading(false)
+      setRevealed(true)
     } finally {
       setLoading(false)
       setRevealed(true)

@@ -1,6 +1,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import type { FormEvent } from "react"
+import { http } from "@/services/http";
 
 type Location = {
   name: string
@@ -39,6 +40,7 @@ function getWeather(code: number, isDay: boolean): WeatherInfo {
 }
 
 function Weather() {
+  const API = "https://geocoding-api.open-meteo.com"
   const [city, setCity] = useState("")
   const [weather, setWeather] = useState<WeatherData | null>(null)
   const [loading, setLoading] = useState(false)
@@ -78,8 +80,8 @@ function Weather() {
 
     try {
       // Find city coordinates
-      const geoResponse = await fetch(
-        `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&count=1&language=en&format=json`,
+      const geoResponse = await http(
+        `${API}/v1/search?name=${encodeURIComponent(query)}&count=1&language=en&format=json`,
         { signal: controller.signal }
       )
       if (!geoResponse.ok) throw new Error("Location request failed")
@@ -95,8 +97,8 @@ function Weather() {
 
       // Get current weather
       const fields = "temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code,is_day"
-      const response = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${location.latitude}&longitude=${location.longitude}&current=${fields}`,
+      const response = await http(
+        `${API}/v1/forecast?latitude=${location.latitude}&longitude=${location.longitude}&current=${fields}`,
         { signal: controller.signal }
       )
       if (!response.ok) throw new Error("Weather request failed")

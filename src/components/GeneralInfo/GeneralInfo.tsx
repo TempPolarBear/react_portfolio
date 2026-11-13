@@ -1,8 +1,8 @@
-import PersonalInfo from './PersonalInfo'
-import Availability from './Availability'
-import Contacts from './Contacts'
-import SocialMedia from './SocialMedia'
-import Languages from './Languages'
+import PersonalInfo from '@/components/GeneralInfo/PersonalInfo'
+import Availability from '@/components/GeneralInfo/Availability'
+import Contacts from '@/components/GeneralInfo/Contacts'
+import SocialMedia from '@/components/GeneralInfo/SocialMedia'
+import Languages from '@/components/GeneralInfo/Languages'
 
 function GeneralInfo() {
   return (

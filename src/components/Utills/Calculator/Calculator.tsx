@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { addValue, calculateExpression } from "./calculatorLogic"
+import { addValue, calculateExpression } from "@/components/Utills/Calculator/calculatorLogic"
 
 const buttons = [
   { label: "C", action: "clear", style: "btn-danger calculator-clear" },
