@@ -1,99 +1,94 @@
-# React Portfolio
 
-A personal portfolio website built with React, TypeScript, and Vite. It brings together professional information, selected projects, learning milestones, skills, education, certificates, and interactive mini apps in one responsive interface.
 
-## ✨ Features
+# Personal Portfolio
 
-- Personal profile, availability, contact details, languages, and social links
-- Experience and learning journey sections
-- Project showcase with screenshots, technology summaries, source links, and live demos where available
-- Certificate gallery and education details
-- Hard and soft skills
-- Six interactive mini apps: calculator, randomizer, date and time, weather, currency converter, and prediction
-- Light and dark theme toggle
-- Responsive navigation, carousels, and image lightboxes
-- Downloadable CV PDF
+[**Live Demo**](https://valeriia-kuznetsova-react-portfolio.netlify.app) · [**GitHub Repository**](https://github.com/TempPolarBear/react_portfolio)
 
-## 🧰 Tech Stack
+## About the Project
 
-| Area | Technologies |
-| --- | --- |
-| App | React 19, TypeScript, Vite |
-| Styling and layout | CSS, Bootstrap 5, Bootswatch |
-| UI interactions | Swiper, AOS, Lightbox2, jQuery |
-| Icons | Font Awesome Free |
-| Code quality | ESLint, typescript-eslint, React Hooks and React Refresh ESLint plugins |
+This is my personal portfolio and a learning project that has evolved alongside my frontend development studies.
 
-## 📚 Portfolio Sections
+I originally built the website using HTML, CSS, and Bootstrap. As I learned JavaScript, I added interactive mini-apps and utilities. Later, after moving on to React and TypeScript, I gradually migrated the existing website to the new stack while keeping its original design.
 
-- Welcome
-- General information: personal info, availability, contacts, languages, and social media
-- Portfolio: experience, learning journey, projects, certification, education, and JavaScript mini apps
-- Skills: hard skills and soft skills
+The project reflects my learning process, practical experiments, and ongoing improvements. It was built with the guidance of a mentor.
 
-## 🗂️ Project Structure
+## Features
 
-```text
-public/
-└── assets/
-    ├── docs/                 # CV PDF
-    └── img/                  # Profile, project, certificate, and utility images
-src/
-├── assets/styles/            # Main site stylesheet
-├── components/
-│   ├── Certification/
-│   ├── Education/
-│   ├── Experience/
-│   ├── Footer/
-│   ├── GeneralInfo/
-│   ├── Hero/
-│   ├── KeywordsMarquee/
-│   ├── LearningJourney/
-│   ├── Navbar/
-│   ├── Projects/
-│   ├── Skills/
-│   └── Utills/                # Interactive mini apps
-├── App.tsx
-├── App.css
-├── index.css
-└── main.tsx
-index.html
-vite.config.ts
-eslint.config.js
-package.json
-package-lock.json
-tsconfig*.json
-```
+- **Calculator** — supports addition, subtraction, multiplication, division, and decimal numbers, with standard operator precedence.
+- **Randomizer** — generates a random integer within a custom range or picks a random item from a user-provided list.
+- **World Clock** — displays the current time in a selected city and updates in real time.
+- **Weather** — lets users search for a city and view its temperature, humidity, and wind speed.
+- **Currency Converter** — converts currencies using exchange rates from Frankfurter, with a currency search by name.
+- **Fortune Cookie** — fetches random fortunes from the DumbAPIs service and reveals them with an animated cookie.
+- **Light and Dark Themes** — lets users switch between two interface themes.
+- **CV Download** — provides a downloadable copy of my resume.
+- **Responsive Layout** — adapts the interface to different screen sizes.
+- **Project Gallery** — showcases selected projects with an interactive image viewer.
 
-## 🚀 Getting Started
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| React 19 | UI development |
+| TypeScript | Static typing |
+| Vite 8 | Development server and build tool |
+| React Router | Client-side routing |
+| ky | HTTP requests |
+| HTML5, CSS3 | Markup and styling |
+| Bootstrap 5 | Layout and UI components |
+| Bootswatch | Bootstrap themes |
+| Swiper | Sliders and carousels |
+| AOS | Scroll animations |
+| Yet Another React Lightbox | Image viewing |
+| Font Awesome | Icons |
+| ESLint | Code linting |
+
+## Data Sources
+
+- [Open-Meteo](https://open-meteo.com/) — geocoding and weather data.
+- [Frankfurter](https://www.frankfurter.dev/) — currency exchange rates.
+- [DumbAPIs](https://dumbapis.com/) — random fortune messages for the Fortune Cookie mini-app.
+
+## Getting Started
 
 ### Prerequisites
 
-- Node.js (a version supported by the installed Vite release)
-- npm
+- Node.js 22.12 or newer (or 20.19+).
+- npm.
 
-### Install and run
+### Installation
+
+Clone the repository:
 
 ```bash
-git clone https://github.com/TempPolarBear/React-Portfolio.git
-cd React-Portfolio
-npm ci
+git clone https://github.com/TempPolarBear/react_portfolio.git
+cd react_portfolio
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-Vite prints the local development URL in the terminal after the server starts.
-
-## 🛠️ Commands
+### Available Scripts
 
 | Command | Description |
-| --- | --- |
-| `npm run dev` | Start the Vite development server with hot reload |
-| `npm run build` | Type-check the project and create a production build in `dist/` |
-| `npm run lint` | Run ESLint across the project |
-| `npm run preview` | Serve the production build locally for preview |
+|---|---|
+| `npm run dev` | Starts the development server |
+| `npm run build` | Runs TypeScript checks and creates a production build |
+| `npm run lint` | Runs ESLint |
+| `npm run preview` | Previews the production build locally |
 
-## 🔗 Repository
+## Development Progress
 
-[github.com/TempPolarBear/React-Portfolio](https://github.com/TempPolarBear/React-Portfolio)
+The portfolio is an ongoing project. I continue to improve it as I gain experience with React, TypeScript, and frontend development.
 
-No published URL for this portfolio site is listed because a deployed version has not been verified.
+My next steps include refactoring components, improving code structure, polishing the mini-apps, fixing issues, and making further improvements to performance and usability.
+
