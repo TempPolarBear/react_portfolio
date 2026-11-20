@@ -74,6 +74,20 @@ React components should primarily use the functional and declarative approach. D
 - Prefer named functions when nested callbacks make the code difficult to read.
 - Avoid deeply nested conditions and callback chains.
 
+
+## 3.1 Constants and Hardcoding
+
+- Avoid unnecessary hardcoded values, magic numbers, and magic strings.
+- Extract repeated or meaningful values into clearly named constants.
+- Keep configuration values, API endpoints, timeouts, limits, and identifiers in appropriate constants or configuration files.
+- Do not extract every literal value into a constant. One-time values that are clear in context can remain inline.
+- Avoid duplicating the same values across multiple components or files.
+- Do not hardcode data that should come from an API, configuration, or another reliable source.
+- Use fallback data only when there is a clear reason and a defined fallback strategy.
+- Keep fallback data minimal, maintainable, and consistent with the actual API data structure.
+- Before removing or replacing hardcoded values, check how they are used and whether the application depends on them.
+
+
 ## 4. Learning and Collaboration
 
 The project belongs to a developer who is still learning React and TypeScript.
