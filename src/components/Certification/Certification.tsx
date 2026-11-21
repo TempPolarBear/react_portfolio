@@ -4,11 +4,12 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Scrollbar } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 function Certification() {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
@@ -29,7 +30,7 @@ function Certification() {
         </div>
 
         <div className="card-body">
-          <Swiper modules={[Navigation, Pagination]} spaceBetween={30} slidesPerView={1} navigation pagination={{ clickable: true }} scrollbar={{ draggable: true }} loop={true} className="swiper-container"
+          <Swiper modules={[Navigation, Pagination, Scrollbar]} spaceBetween={30} slidesPerView={1} navigation pagination={{ clickable: true }} scrollbar={{ draggable: true }} loop={true} className="swiper-container"
           >
             {/* Czech Certificate */}
             <SwiperSlide>

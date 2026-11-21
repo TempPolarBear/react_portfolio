@@ -14,13 +14,19 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+const CURRENCY_CONVERTER_SLIDE_INDEX = 4;
+
 function Utils() {
   const [utilsPaginationElement, setUtilsPaginationElement] = useState<HTMLDivElement | null>(null);
   const [utilsSwiper, setUtilsSwiper] = useState<SwiperInstance | null>(null);
   const [activeSlideElement, setActiveSlideElement] = useState<HTMLElement | null>(null);
+  const [hasOpenedCurrencyConverter, setHasOpenedCurrencyConverter] = useState(false);
 
   const syncActiveSlide = (swiper: SwiperInstance) => {
     setActiveSlideElement(swiper.slides[swiper.activeIndex] ?? null);
+    if (swiper.realIndex === CURRENCY_CONVERTER_SLIDE_INDEX) {
+      setHasOpenedCurrencyConverter(true);
+    }
   };
 
   useEffect(() => {
@@ -81,7 +87,7 @@ function Utils() {
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="d-flex justify-content-center px-2">
-                                <CurrencyConverter />
+                                {hasOpenedCurrencyConverter && <CurrencyConverter />}
                             </div>
                         </SwiperSlide>
                         <SwiperSlide>

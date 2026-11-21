@@ -1,17 +1,4 @@
-import { useState } from 'react'
-
 function Hero() {
-
-    const [isDownloading, setIsDownloading] = useState(false)
-
-        const handleDownload = () => {
-        setIsDownloading(true)
-
-        setTimeout(() => {
-            setIsDownloading(false)
-            }, 5000)
-        }
-
     return (
         <header data-aos="fade-up" data-aos-duration="1500" className="mt-5 mb-5" id="welcome" style={{ marginTop: '100px' }}>
             <div className="container">
@@ -29,9 +16,9 @@ function Hero() {
                                 </p>
                                 <div className="d-flex gap-2 mt-3">
                                     <a className="btn btn-primary shadow-sm zoomInOut" href="/assets/docs/Valeriia_Kuznetsova_CV.pdf" target="_blank" rel="noopener noreferrer">View CV</a>
-                                    <a className="btn btn-outline-primary shadow-sm zoomInOut" href="/assets/docs/Valeriia_Kuznetsova_CV.pdf" onClick={handleDownload} download="Valeriia_Kuznetsova_CV.pdf">
-                                        <i className={`fa-solid ${isDownloading ? 'fa-hourglass-half' : 'fa-download'} me-2`} aria-hidden="true"></i>
-                                            {isDownloading ? 'Please wait...' : 'Download CV'}
+                                    <a className="btn btn-outline-primary shadow-sm zoomInOut" href="/assets/docs/Valeriia_Kuznetsova_CV.pdf" download="Valeriia_Kuznetsova_CV.pdf">
+                                        <i className="fa-solid fa-download me-2" aria-hidden="true"></i>
+                                        Download CV
                                     </a>
                                 </div>
                             </div>

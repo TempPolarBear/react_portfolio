@@ -8,7 +8,6 @@ import 'aos/dist/aos.css'
 
 import '@/assets/styles/style.css'
 
-import '@/index.css'
 import App from '@/App.tsx'
 
 createRoot(document.getElementById('root')!).render(

@@ -2,11 +2,58 @@
    FORTUNE COOKIE
 ========================================== */
 .fortune-cookie-container {
+  position: relative;
+  isolation: isolate;
   width: 150px;
   height: 150px;
 }
 
+.fortune-cookie-container::before,
+.fortune-cookie-container::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.fortune-cookie-container::before {
+  z-index: 0;
+  inset: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(239, 193, 113, 0.4), rgba(165, 133, 240, 0.3) 50%, transparent 76%);
+  box-shadow: 0 0 22px 4px rgba(239, 193, 113, 0.28), 0 0 34px 10px rgba(165, 133, 240, 0.22);
+  filter: blur(14px);
+}
+
+.fortune-cookie-container::after {
+  z-index: 2;
+  top: 22px;
+  left: 22px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ffe2a3;
+  box-shadow:
+    25px 10px 0 rgba(255, 226, 163, 0.85),
+    96px 2px 0 -1px rgba(220, 199, 255, 0.9),
+    104px 62px 0 -1px rgba(255, 226, 163, 0.8),
+    4px 91px 0 -1px rgba(220, 199, 255, 0.85);
+  filter: drop-shadow(0 0 4px rgba(255, 226, 163, 0.75));
+}
+
+.fortune-magic::before {
+  opacity: 0.8;
+  animation: fortuneGlow 1.8s ease-in-out infinite alternate;
+}
+
+.fortune-magic::after {
+  opacity: 0.75;
+  animation: fortuneSparkle 1.6s ease-in-out infinite;
+}
+
 .fortune-cookie-img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -45,6 +92,36 @@
   animation: fortuneReveal 0.5s ease-out;
 }
 
+.fortune-button-loading {
+  background-image: linear-gradient(
+    110deg,
+    #a33d59 0%,
+    #a05a20 18%,
+    #86620f 34%,
+    #26744f 52%,
+    #315cad 70%,
+    #6242a5 86%,
+    #a33d59 100%
+  );
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  animation: fortuneRainbow 7s linear infinite alternate;
+}
+
+@keyframes fortuneRainbow {
+  to { background-position: 100% 50%; }
+}
+
+@keyframes fortuneGlow {
+  from { opacity: 0.45; transform: scale(0.92); }
+  to { opacity: 0.85; transform: scale(1.06); }
+}
+
+@keyframes fortuneSparkle {
+  0%, 100% { opacity: 0.45; transform: scale(0.8); }
+  50% { opacity: 0.95; transform: scale(1.1); }
+}
+
 @keyframes fortuneFloat {
   0%, 100% { transform: translateY(0) rotate(-4deg); }
   50% { transform: translateY(-8px) rotate(4deg); }
@@ -72,5 +149,30 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fortune-button-loading,
+  .fortune-cookie-img,
+  .fortune-float,
+  .fortune-shake,
+  .fortune-bounce,
+  .fortune-reveal,
+  .fortune-magic::before,
+  .fortune-magic::after {
+    animation: none;
+  }
+
+  .fortune-cookie-img {
+    transition: none;
+  }
+
+  .fortune-magic::before {
+    opacity: 0.65;
+  }
+
+  .fortune-magic::after {
+    opacity: 0.75;
   }
 }

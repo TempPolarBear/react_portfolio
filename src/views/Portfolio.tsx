@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import AOS from 'aos'
 
-import '@/App.css'
-
 import Navbar from '@/components/Navbar/Navbar.tsx'
 import Hero from '@/components/Hero/Hero.tsx'
 import KeywordsMarquee from '@/components/KeywordsMarquee/KeywordsMarquee.tsx'

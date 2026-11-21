@@ -6,7 +6,8 @@ function Education() {
                     <h5 className="m-0 p-0 fw-bold"><i className="fa-solid fa-graduation-cap me-1"></i>Education</h5>
                 </div>
                 <div className="card-body">
-                    <p><i className="fa-solid fa-building-columns me-1"></i>GoIT: Front-End/Full-Stack Developer Course</p>
+                    <h6 className="text-primary fw-bold mb-3"><i className="fa-solid fa-book-open me-1"></i>COURSES</h6>
+                    <p><i className="fa-solid fa-award"></i>GoIT: Front-End/Full-Stack Developer Course</p>
                     <p><i className="fa-solid fa-graduation-cap me-1"></i>Program: Front-End/Full-Stack Developer</p>
                     <p><i className="fa-solid fa-location-dot me-1"></i>Format: Online</p>
                     <p><i className="fa-solid fa-calendar-days me-1"></i>Study Period: Feb 2026 - Present</p>
@@ -14,11 +15,12 @@ function Education() {
                     <p className="mb-0"><i className="fa-solid fa-circle-info me-1"></i>Description: Practical Front-End development training focused on modern web development, responsive interfaces and project-based learning.</p>
                 </div>
                 <div className="card-body">
-                        <p><i className="fa-solid fa-building-columns me-1"></i>University: Odesa National University of Technology</p>
-                        <p><i className="fa-solid fa-graduation-cap me-1"></i>Degree: Bachelor's degree</p>
-                        <p><i className="fa-solid fa-location-dot me-1"></i>Location: Odesa, Ukraine</p>
-                        <p><i className="fa-solid fa-calendar-days me-1"></i>Study Period: 2020–2022</p>
-                        <p><i className="fa-solid fa-circle-info me-1"></i>Description: Developed analytical thinking, project work, and problem-solving skills.</p>
+                    <h6 className="text-primary fw-bold mb-3"><i className="fa-solid fa-graduation-cap me-1"></i>UNIVERSITY</h6>
+                    <p><i className="fa-solid fa-graduation-cap me-1"></i>University: Odesa National University of Technology</p>
+                    <p><i className="fa-solid fa-graduation-cap me-1"></i>Degree: Bachelor's degree</p>
+                    <p><i className="fa-solid fa-location-dot me-1"></i>Location: Odesa, Ukraine</p>
+                    <p><i className="fa-solid fa-calendar-days me-1"></i>Study Period: 2020–2022</p>
+                    <p><i className="fa-solid fa-circle-info me-1"></i>Description: Developed analytical thinking, project work, and problem-solving skills.</p>
                 </div>  
             </div>
         </section>

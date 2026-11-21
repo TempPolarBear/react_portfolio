@@ -67,7 +67,7 @@ function Projects() {
               <article className="text-center px-2">
                   <h4 className="text-center p-0 m-2">Movie Search with React Query</h4>
                   <p className="d-flex justify-content-center align-items-center flex-wrap gap-2"><span className="badge rounded-pill border border-primary text-primary fw-normal">Learning Project</span></p>
-                  <a className="m-2" href="/assets/img/projects/movie-search-with-react-query.webp" onClick={(e) => { e.preventDefault(); setLightboxIndex(1); }}>
+                  <a className="m-2" href="/assets/img/projects/movie-search-with-react-query.webp" onClick={(e) => { e.preventDefault(); setLightboxIndex(0); }}>
                     <img className="img-fluid thumb rounded mb-2" width="150" height="150" src="/assets/img/projects/movie-search-with-react-query.webp" alt="Movie Search with React Query" loading="lazy" />
                   </a>
                   <p className="mb-2"><strong>Summary:</strong> Search movies with cached queries and pagination.</p>

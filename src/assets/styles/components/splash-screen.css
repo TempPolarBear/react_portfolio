@@ -1,0 +1,126 @@
+/* ==========================================
+   PORTFOLIO SPLASH SCREEN
+========================================== */
+.portfolio-splash-screen {
+  position: fixed;
+  z-index: 2000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 1.5rem;
+  color: #eef6ff;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(25, 104, 183, 0.2), transparent 42%),
+    linear-gradient(145deg, #071321 0%, #091a31 55%, #0a2140 100%);
+  opacity: 1;
+  transition: opacity 450ms ease;
+}
+
+.portfolio-splash-screen::before {
+  position: absolute;
+  width: min(72vw, 34rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(111, 190, 255, 0.09);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 2.5rem rgba(77, 155, 225, 0.025),
+    0 0 0 5rem rgba(77, 155, 225, 0.02);
+  content: "";
+  pointer-events: none;
+}
+
+.portfolio-splash-screen--exiting {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.portfolio-splash-screen__content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 30rem);
+  text-align: center;
+  animation: splash-content-appear 650ms ease-out both;
+}
+
+.portfolio-splash-screen__brand {
+  margin: 0;
+  color: #f5f9ff;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1.1;
+  text-shadow: 0 0 32px rgba(79, 163, 255, 0.25);
+}
+
+.portfolio-splash-screen__message {
+  margin: 1.25rem 0 2rem;
+  color: #a9c5e3;
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  letter-spacing: 0.08em;
+}
+
+.portfolio-splash-screen__loader {
+  position: relative;
+  width: min(10rem, 55vw);
+  height: 3px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(106, 170, 226, 0.2);
+  box-shadow: 0 0 16px rgba(49, 143, 226, 0.14);
+}
+
+.portfolio-splash-screen__loader::after {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 42%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #3988e5, #78e2f5);
+  box-shadow: 0 0 12px rgba(91, 190, 245, 0.6);
+  animation: splash-loader-progress 1.35s ease-in-out infinite;
+  content: "";
+}
+
+@keyframes splash-content-appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splash-loader-progress {
+  from {
+    transform: translateX(-105%);
+  }
+
+  to {
+    transform: translateX(245%);
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-splash-screen__message {
+    margin-top: 1rem;
+    margin-bottom: 1.75rem;
+    letter-spacing: 0.06em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-splash-screen,
+  .portfolio-splash-screen__content {
+    animation: none;
+    transition: none;
+  }
+
+  .portfolio-splash-screen__loader::after {
+    width: 100%;
+    animation: none;
+  }
+}
