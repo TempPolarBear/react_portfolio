@@ -72,7 +72,7 @@ function Projects() {
                   </a>
                   <p className="mb-2"><strong>Summary:</strong> Search movies with cached queries and pagination.</p>
                   <p className="mb-2"><i className="fa-solid fa-code me-1"></i><strong>Technologies:</strong></p>
-                  <ul className="skill-tags project-tags justify-content-center align-items-center"><li><span className="skill-tag">React</span></li><li><span className="skill-tag">TypeScript</span></li><li><span className="skill-tag">TanStack Query</span></li><li><span className="skill-tag">Axios</span></li><li><span className="skill-tag">React Paginate</span></li><li><span className="skill-tag">Vite</span></li></ul>
+                  <ul className="d-flex flex-wrap gap-2 mb-0 p-0 list-unstyled justify-content-center align-items-center"><li><span className="skill-tag">React</span></li><li><span className="skill-tag">TypeScript</span></li><li><span className="skill-tag">TanStack Query</span></li><li><span className="skill-tag">Axios</span></li><li><span className="skill-tag">React Paginate</span></li><li><span className="skill-tag">Vite</span></li></ul>
                   <p className="mb-1"><strong>Key features:</strong></p>
                   <ul className="list-unstyled small mb-3 d-inline-block text-start">
                     <li>Search with controlled pagination</li>
@@ -95,7 +95,7 @@ function Projects() {
                   </a>
                   <p className="mb-2"><strong>Summary:</strong> Search for movies using the TMDB API.</p>
                   <p className="mb-2"><i className="fa-solid fa-code me-1"></i><strong>Technologies:</strong></p>
-                  <ul className="skill-tags project-tags justify-content-center align-items-center"><li><span className="skill-tag">React</span></li><li><span className="skill-tag">TypeScript</span></li><li><span className="skill-tag">Axios</span></li><li><span className="skill-tag">TMDB API</span></li><li><span className="skill-tag">Vite</span></li></ul>
+                  <ul className="d-flex flex-wrap gap-2 mb-0 p-0 list-unstyled justify-content-center align-items-center"><li><span className="skill-tag">React</span></li><li><span className="skill-tag">TypeScript</span></li><li><span className="skill-tag">Axios</span></li><li><span className="skill-tag">TMDB API</span></li><li><span className="skill-tag">Vite</span></li></ul>
                   <p className="mb-1"><strong>Key features:</strong></p>
                   <ul className="list-unstyled small mb-3 d-inline-block text-start">
                     <li>Movie search through the TMDB API</li>
@@ -118,7 +118,7 @@ function Projects() {
                   </a>
                   <p className="mb-2"><strong>Summary:</strong> Record café feedback and view vote totals.</p>
                   <p className="mb-2"><i className="fa-solid fa-code me-1"></i><strong>Technologies:</strong></p>
-                  <ul className="skill-tags project-tags justify-content-center align-items-center"><li><span className="skill-tag">React</span></li><li><span className="skill-tag">TypeScript</span></li><li><span className="skill-tag">Vite</span></li><li><span className="skill-tag">CSS Modules</span></li></ul>
+                  <ul className="d-flex flex-wrap gap-2 mb-0 p-0 list-unstyled justify-content-center align-items-center"><li><span className="skill-tag">React</span></li><li><span className="skill-tag">TypeScript</span></li><li><span className="skill-tag">Vite</span></li><li><span className="skill-tag">CSS Modules</span></li></ul>
                   <p className="mb-1"><strong>Key features:</strong></p>
                   <ul className="list-unstyled small mb-3 d-inline-block text-start">
                     <li>Good, neutral, and bad vote state</li>
@@ -144,7 +144,7 @@ function Projects() {
                   </a>
                   <p className="mb-2"><strong>Summary:</strong> A team-built dessert shop with product browsing, ordering, API integration and a responsive interface.</p>
                   <p className="mb-2"><i className="fa-solid fa-code me-1"></i><strong>Technologies:</strong></p>
-                  <ul className="skill-tags project-tags justify-content-center align-items-center"><li><span className="skill-tag">HTML</span></li><li><span className="skill-tag">CSS</span></li><li><span className="skill-tag">JavaScript</span></li><li><span className="skill-tag">Vite</span></li><li><span className="skill-tag">Axios</span></li><li><span className="skill-tag">Toastify</span></li></ul>
+                  <ul className="d-flex flex-wrap gap-2 mb-0 p-0 list-unstyled justify-content-center align-items-center"><li><span className="skill-tag">HTML</span></li><li><span className="skill-tag">CSS</span></li><li><span className="skill-tag">JavaScript</span></li><li><span className="skill-tag">Vite</span></li><li><span className="skill-tag">Axios</span></li><li><span className="skill-tag">Toastify</span></li></ul>
                   <p className="mb-2"><strong>My contribution:</strong> Built the responsive Order Modal with form validation, API submission, loading states, toast feedback and multiple closing interactions.</p>
                   <p className="mb-1"><strong>Key features:</strong></p>
                   <ul className="list-unstyled small mb-3 d-inline-block text-start">
@@ -178,7 +178,7 @@ function Projects() {
               <p className="text-body small mb-3">The project is actively evolving and will continue to be improved and expanded.</p>
               <p className="mb-2"><strong>Summary:</strong> A personal fantasy RPG character creator with saved characters.</p>
               <p className="mb-2"><i className="fa-solid fa-code me-1"></i><strong>Technologies:</strong></p>
-              <ul className="skill-tags project-tags justify-content-center align-items-center"><li><span className="skill-tag">JavaScript</span></li><li><span className="skill-tag">Vite</span></li><li><span className="skill-tag">HTML</span></li><li><span className="skill-tag">CSS</span></li><li><span className="skill-tag">Bootstrap</span></li></ul>
+              <ul className="d-flex flex-wrap gap-2 mb-0 p-0 list-unstyled justify-content-center align-items-center"><li><span className="skill-tag">JavaScript</span></li><li><span className="skill-tag">Vite</span></li><li><span className="skill-tag">HTML</span></li><li><span className="skill-tag">CSS</span></li><li><span className="skill-tag">Bootstrap</span></li></ul>
               <p className="mb-1"><strong>Key features:</strong></p>
               <ul className="list-unstyled small mb-3 d-inline-block text-start">
                 <li>Step-by-step character creation</li>
@@ -205,7 +205,7 @@ function Projects() {
                     </a>
                     <p className="mb-2"><strong>Summary:</strong> A layout for a music NFT platform concept.</p>
                     <p className="mb-2"><i className="fa-solid fa-code me-1"></i><strong>Technologies:</strong></p>
-                    <ul className="skill-tags project-tags justify-content-center align-items-center"><li><span className="skill-tag">HTML</span></li><li><span className="skill-tag">CSS</span></li><li><span className="skill-tag">Bootstrap</span></li></ul>
+                    <ul className="d-flex flex-wrap gap-2 mb-0 p-0 list-unstyled justify-content-center align-items-center"><li><span className="skill-tag">HTML</span></li><li><span className="skill-tag">CSS</span></li><li><span className="skill-tag">Bootstrap</span></li></ul>
                     <p className="mb-1"><strong>Key features:</strong></p>
                     <ul className="list-unstyled small mb-3 d-inline-block text-start">
                       <li>Music NFT platform concept</li>
@@ -227,7 +227,7 @@ function Projects() {
                     </a>
                     <p className="mb-2"><strong>Summary:</strong> A company website layout with services, portfolio and team sections.</p>
                     <p className="mb-2"><i className="fa-solid fa-code me-1"></i><strong>Technologies:</strong></p>
-                    <ul className="skill-tags project-tags justify-content-center align-items-center"><li><span className="skill-tag">HTML</span></li><li><span className="skill-tag">CSS</span></li><li><span className="skill-tag">Bootstrap</span></li></ul>
+                    <ul className="d-flex flex-wrap gap-2 mb-0 p-0 list-unstyled justify-content-center align-items-center"><li><span className="skill-tag">HTML</span></li><li><span className="skill-tag">CSS</span></li><li><span className="skill-tag">Bootstrap</span></li></ul>
                     <p className="mb-1"><strong>Key features:</strong></p>
                     <ul className="list-unstyled small mb-3 d-inline-block text-start">
                       <li>Company services website</li>
@@ -249,7 +249,7 @@ function Projects() {
                     </a>
                     <p className="mb-2"><strong>Summary:</strong> A barbershop layout with services, prices and a gallery.</p>
                     <p className="mb-2"><i className="fa-solid fa-code me-1"></i><strong>Technologies:</strong></p>
-                    <ul className="skill-tags project-tags justify-content-center align-items-center"><li><span className="skill-tag">HTML</span></li><li><span className="skill-tag">CSS</span></li><li><span className="skill-tag">Bootstrap</span></li></ul>
+                    <ul className="d-flex flex-wrap gap-2 mb-0 p-0 list-unstyled justify-content-center align-items-center"><li><span className="skill-tag">HTML</span></li><li><span className="skill-tag">CSS</span></li><li><span className="skill-tag">Bootstrap</span></li></ul>
                     <p className="mb-1"><strong>Key features:</strong></p>
                     <ul className="list-unstyled small mb-3 d-inline-block text-start">
                       <li>Services and pricing sections</li>
@@ -271,7 +271,7 @@ function Projects() {
                     </a>
                     <p className="mb-2"><strong>Summary:</strong> An informational COVID-19 resource layout.</p>
                     <p className="mb-2"><i className="fa-solid fa-code me-1"></i><strong>Technologies:</strong></p>
-                    <ul className="skill-tags project-tags justify-content-center align-items-center"><li><span className="skill-tag">HTML</span></li><li><span className="skill-tag">CSS</span></li></ul>
+                    <ul className="d-flex flex-wrap gap-2 mb-0 p-0 list-unstyled justify-content-center align-items-center"><li><span className="skill-tag">HTML</span></li><li><span className="skill-tag">CSS</span></li></ul>
                     <p className="mb-1"><strong>Key features:</strong></p>
                     <ul className="list-unstyled small mb-3 d-inline-block text-start">
                       <li>COVID-19 information concept</li>

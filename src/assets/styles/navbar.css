@@ -1,0 +1,45 @@
+/* ==========================================
+   NAVIGATION
+========================================== */
+.site-navbar {
+  background-color: var(--bs-body-bg) !important;
+  color: var(--bs-body-color);
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+.site-navbar .navbar-nav .nav-link,
+.site-navbar .navbar-nav .nav-link:focus,
+.site-navbar .navbar-nav .nav-link:hover {
+  color: var(--bs-body-color) !important;
+}
+
+.site-navbar .navbar-brand {
+  color: var(--bs-primary) !important;
+}
+
+.site-navbar .navbar-toggler {
+  border-color: var(--bs-border-color);
+}
+
+.site-navbar .navbar-toggler-icon {
+  filter: none;
+}
+
+[data-bs-theme="dark"] .site-navbar .navbar-toggler-icon {
+  filter: invert(1) grayscale(1);
+}
+
+.site-navbar .dropdown-menu {
+  background-color: var(--bs-body-bg);
+  border-color: var(--bs-border-color);
+}
+
+.site-navbar .dropdown-item {
+  color: var(--bs-body-color);
+}
+
+.site-navbar .dropdown-item:hover,
+.site-navbar .dropdown-item:focus {
+  color: var(--bs-emphasis-color);
+  background-color: var(--bs-tertiary-bg);
+}

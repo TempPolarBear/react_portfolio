@@ -1,0 +1,22 @@
+/* Weather */
+.weather-result {
+  animation: weatherReveal 0.45s ease-out;
+}
+
+.weather-icon {
+  animation: weatherFloat 3s ease-in-out infinite;
+}
+
+@keyframes weatherReveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes weatherFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .weather-result, .weather-icon { animation: none; }
+}

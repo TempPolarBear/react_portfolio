@@ -1,0 +1,67 @@
+/* ==========================================
+   MINI-APP COMPONENTS
+========================================== */
+#utils .utility-card {
+  width: min(100%, 420px);
+}
+
+#utils .calculator-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+#utils .calculator-clear {
+  grid-column: span 3;
+}
+
+#utils .calculator-zero {
+  grid-column: span 2;
+}
+
+#utils .utility-result {
+  min-height: 1.5rem;
+  overflow-wrap: anywhere;
+}
+
+#utils .utility-details div {
+  gap: 1rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+#utils .utility-details div:last-child {
+  border-bottom: 0;
+}
+
+#utils .utility-details dt,
+#utils .utility-details dd {
+  margin: 0;
+}
+
+#utils .utility-details dd {
+  overflow-wrap: anywhere;
+}
+
+#utils .prediction-box {
+  min-height: 145px;
+  padding: 1.25rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zoomInOut {
+    transition: none !important;
+  }
+
+  .skill-tag,
+  #utils .btn {
+    transition: none;
+  }
+
+  main .card.zoomInOut:hover,
+  #utils .btn:hover:not(:disabled) {
+    transform: none !important;
+  }
+}

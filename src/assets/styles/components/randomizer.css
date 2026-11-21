@@ -1,0 +1,23 @@
+/* ==========================================
+   RANDOMIZER
+========================================== */
+.random-result-area {
+  min-height: 52px;
+}
+
+.random-spin { animation: randomSpin 0.6s ease-in-out infinite; }
+.random-result-text { animation: randomReveal 0.35s ease-out; }
+
+@keyframes randomSpin {
+  from { transform: rotate(0deg) scale(0.8); }
+  to { transform: rotate(360deg) scale(1.1); }
+}
+
+@keyframes randomReveal {
+  from { opacity: 0; transform: translateY(8px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .random-spin, .random-result-text { animation: none; }
+}

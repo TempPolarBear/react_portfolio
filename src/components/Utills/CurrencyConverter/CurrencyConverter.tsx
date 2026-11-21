@@ -5,8 +5,10 @@ import { http } from "@/services/http";
 type Currency = { iso_code: string; name: string; symbol?: string | null }
 type Rate = { rate: number; date: string; base: string; quote: string }
 
-const API = "https://api.frankfurter.dev/v2"
-const fallback: Currency[] = [
+const FRANKFURTER_API_BASE_URL = "https://api.frankfurter.dev/v2"
+const CURRENCY_REQUEST_DELAY_MS = 350
+const CURRENCY_LOCALE = "en-US"
+const FALLBACK_CURRENCIES: Currency[] = [
   { iso_code: "USD", name: "US Dollar" },
   { iso_code: "EUR", name: "Euro" },
   { iso_code: "UAH", name: "Ukrainian Hryvnia" },
@@ -16,7 +18,7 @@ const fallback: Currency[] = [
 ]
 
 function CurrencyConverter() {
-  const [currencies, setCurrencies] = useState<Currency[]>(fallback)
+  const [currencies, setCurrencies] = useState<Currency[]>(FALLBACK_CURRENCIES)
   const [amount, setAmount] = useState("100")
   const [from, setFrom] = useState("USD")
   const [to, setTo] = useState("EUR")
@@ -29,6 +31,7 @@ function CurrencyConverter() {
   const [swapped, setSwapped] = useState(false)
   const rateRequestIdRef = useRef(0)
 
+  // Currency changes invalidate any previous rate result immediately, before the debounced replacement starts.
   const resetRateRequest = () => {
     rateRequestIdRef.current += 1
     setLoading(false)
@@ -36,21 +39,42 @@ function CurrencyConverter() {
     setRateData(null)
   }
 
-  // Load available currencies
+  // Load the Frankfurter currency catalog once so users can choose supported ISO currencies.
   useEffect(() => {
+    // Aborting makes the mount-only request settle quietly if the component is removed.
     const controller = new AbortController()
 
     const loadCurrencies = async () => {
       try {
-        const response = await fetch(`${API}/currencies`, { signal: controller.signal })
+        const response = await fetch(`${FRANKFURTER_API_BASE_URL}/currencies`, { signal: controller.signal })
+        // A successful network connection can still return an HTTP error, so validate the status before parsing.
         if (!response.ok) throw new Error("Currency request failed")
 
-        const data: Currency[] = await response.json()
+        const data: unknown = await response.json()
         if (!Array.isArray(data)) throw new Error("Invalid currency list")
 
-        const list = data
-          .filter(item => item.iso_code && item.name)
-          .sort((a, b) => a.iso_code.localeCompare(b.iso_code))
+        const items: unknown[] = data
+        const list: Currency[] = []
+
+        for (const item of items) {
+          if (
+            typeof item !== "object" ||
+            item === null ||
+            !("iso_code" in item) ||
+            !("name" in item) ||
+            typeof item.iso_code !== "string" ||
+            typeof item.name !== "string"
+          ) {
+            continue
+          }
+
+          list.push({
+            iso_code: item.iso_code,
+            name: item.name,
+          })
+        }
+
+        list.sort((a, b) => a.iso_code.localeCompare(b.iso_code))
 
         if (!list.length) throw new Error("Empty currency list")
         if (!controller.signal.aborted) setCurrencies(list)
@@ -60,32 +84,65 @@ function CurrencyConverter() {
     }
 
     void loadCurrencies()
+    // This cleanup prevents the mounted-only catalog request from surviving component teardown.
     return () => controller.abort()
   }, [])
 
-  // Fetch rate when selected currencies change
+  // Fetch a Frankfurter exchange rate whenever the selected currencies change.
   useEffect(() => {
+    // A new selection gets a distinct id so older responses cannot replace the result for the latest pair.
     const requestId = ++rateRequestIdRef.current
 
     if (from === to) return
 
     const controller = new AbortController()
+    // Keep an update tied to this specific request and its selection, even if a previous response finishes later.
     const isCurrentRequest = () =>
       requestId === rateRequestIdRef.current && !controller.signal.aborted
 
+    // Debounce rapid currency changes for 350 ms so temporary selections do not create unnecessary API traffic.
     const timer = setTimeout(async () => {
       if (!isCurrentRequest()) return
 
       setLoading(true)
 
       try {
-        const response = await http.get(`${API}/rate/${from}/${to}`, { signal: controller.signal })
+        // The existing HTTP client sends the Frankfurter rate request and accepts the shared abort signal.
+        const response = await http.get(`${FRANKFURTER_API_BASE_URL}/rate/${from}/${to}`, { signal: controller.signal })
+        // ky normally throws an HTTPError for unsuccessful HTTP responses before this check.
         if (!response.ok) throw new Error("Rate request failed")
 
-        const data: Rate = await response.json()
-        if (!Number.isFinite(data.rate) || data.rate <= 0) throw new Error("Invalid rate")
+        const data: unknown = await response.json()
+        if (
+          typeof data !== "object" ||
+          data === null ||
+          !("rate" in data) ||
+          !("date" in data) ||
+          !("base" in data) ||
+          !("quote" in data) ||
+          typeof data.rate !== "number" ||
+          !Number.isFinite(data.rate) ||
+          data.rate <= 0 ||
+          typeof data.date !== "string" ||
+          !/^\d{4}-\d{2}-\d{2}$/.test(data.date) ||
+          typeof data.base !== "string" ||
+          typeof data.quote !== "string"
+        ) {
+          throw new Error("Invalid rate")
+        }
 
-        if (isCurrentRequest()) setRateData(data)
+        if (data.base !== from || data.quote !== to) {
+          throw new Error("Rate request returned a different currency pair")
+        }
+
+        const validData: Rate = {
+          rate: data.rate,
+          date: data.date,
+          base: data.base,
+          quote: data.quote,
+        }
+
+        if (isCurrentRequest()) setRateData(validData)
       } catch {
         if (isCurrentRequest()) {
           setRateData(null)
@@ -94,9 +151,10 @@ function CurrencyConverter() {
       } finally {
         if (isCurrentRequest()) setLoading(false)
       }
-    }, 350)
+    }, CURRENCY_REQUEST_DELAY_MS)
 
     return () => {
+      // Changing dependencies cancels the pending timer and aborts the in-flight request to prevent stale updates.
       clearTimeout(timer)
       controller.abort()
     }
@@ -116,7 +174,7 @@ function CurrencyConverter() {
   const result = validAmount && currentRate !== null ? value * currentRate : null
 
   const formatMoney = (number: number, currency: string) =>
-    new Intl.NumberFormat("en-US", { style: "currency", currency, maximumFractionDigits: 2 }).format(number)
+    new Intl.NumberFormat(CURRENCY_LOCALE, { style: "currency", currency, maximumFractionDigits: 2 }).format(number)
 
   const swapCurrencies = () => {
     resetRateRequest()
@@ -162,7 +220,7 @@ function CurrencyConverter() {
           </div>
 
           <div className="col-2 text-center">
-            <button className="btn btn-outline-primary currency-swap d-inline-flex align-items-center justify-content-center" type="button" onClick={swapCurrencies} aria-label="Swap currencies">
+            <button className="btn btn-outline-primary currency-swap w-100 d-inline-flex align-items-center justify-content-center" type="button" onClick={swapCurrencies} aria-label="Swap currencies">
               <i className={`fa-solid fa-right-left ${swapped ? "currency-swap-rotated" : ""}`}></i>
             </button>
           </div>
@@ -178,7 +236,7 @@ function CurrencyConverter() {
         </div>
 
         {/* Result */}
-        <div className="currency-result-box text-center p-3 rounded-3 border">
+        <div className="bg-body-tertiary text-center p-3 rounded-3 border">
           <p className="small text-body-secondary mb-2">Converted amount</p>
 
           <div key={`${from}-${to}-${amount}-${currentRate}`} className="currency-result-value fs-3 fw-bold text-primary" aria-live="polite">

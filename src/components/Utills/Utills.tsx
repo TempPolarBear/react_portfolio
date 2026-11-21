@@ -24,7 +24,8 @@ function Utils() {
   };
 
   useEffect(() => {
-    if (!utilsSwiper || !activeSlideElement) return;
+    const activeSlideContent = activeSlideElement?.firstElementChild;
+    if (!utilsSwiper || !activeSlideContent) return;
 
     let animationFrame = 0;
     const updateHeight = () => {
@@ -37,7 +38,7 @@ function Utils() {
     };
     const resizeObserver = new ResizeObserver(updateHeight);
 
-    resizeObserver.observe(activeSlideElement);
+    resizeObserver.observe(activeSlideContent);
     updateHeight();
 
     return () => {
@@ -57,7 +58,7 @@ function Utils() {
                 <Swiper modules={[Navigation, Pagination]} spaceBetween={30} slidesPerView={1} navigation pagination={{ el: utilsPaginationElement, clickable: true }} loop autoHeight className="utils-swiper p-2" onSwiper={(swiper) => {
                   setUtilsSwiper(swiper);
                   syncActiveSlide(swiper);
-                }} onSlideChangeTransitionEnd={syncActiveSlide}>
+                }} onSlideChange={syncActiveSlide}>
                         <SwiperSlide>
                             <div className="d-flex justify-content-center px-2">
                                 <Calculator />

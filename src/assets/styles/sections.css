@@ -1,0 +1,170 @@
+/* ==========================================
+   HERO AND IMAGE TREATMENT
+========================================== */
+/* Hero photo: a subtle primary-colour glow without changing its layout. */
+#welcome .col.align-self-center img {
+  box-shadow: 0 0 0 0.6rem rgba(var(--bs-primary-rgb), 0.06), 0 16px 32px rgba(var(--bs-primary-rgb), 0.16);
+}
+
+[data-bs-theme="dark"] #welcome .col.align-self-center img {
+  box-shadow: 0 0 0 0.6rem rgba(var(--bs-primary-rgb), 0.14), 0 16px 36px rgba(0, 0, 0, 0.35);
+}
+
+.thumb {
+  aspect-ratio: 1/ 1;
+  object-fit: cover;
+  object-position: top;
+}
+
+
+/* ==========================================
+   KEYWORDS MARQUEE
+========================================== */
+.keyword-track {
+  width: max-content;
+  animation: keyword-scroll 45s linear infinite;
+}
+
+.keyword-reverse {
+  animation-direction: reverse;
+}
+
+.keyword-set {
+  flex: none;
+  min-width: 100vw;
+  justify-content: space-around;
+  padding-right: 1rem;
+}
+
+@keyframes keyword-scroll {
+  to { transform: translateX(-50%); }
+}
+
+#certification .thumb {
+  width: auto;
+  height: 220px;
+  max-width: 100%;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+#utils .weather-controls .form-control {
+  min-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .keyword-window {
+    mask-image: none;
+  }
+  .keyword-track {
+    width: auto;
+    animation: none;
+  }
+  .keyword-set {
+    min-width: 0;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    white-space: normal !important;
+  }
+  .keyword-set[aria-hidden="true"] {
+    display: none !important;
+  }
+}
+
+
+
+/* ==========================================
+   CAROUSELS AND SLIDER CONTROLS
+========================================== */
+#certification .swiper-container {
+  position: relative;
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 10px 55px 50px;
+  overflow: hidden;
+}
+
+#certification .swiper-container .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+/* Navigation arrows */
+#certification .swiper-container .swiper-button-prev,
+#certification .swiper-container .swiper-button-next {
+  color: var(--bs-primary) !important;
+  background: transparent;
+  width: 30px;
+  height: 36px;
+  border: none;
+  box-shadow: none;
+}
+
+#certification .swiper-container .swiper-button-prev::after,
+#certification .swiper-container .swiper-button-next::after {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+/* Pagination dots */
+#certification .swiper-container .swiper-pagination {
+  position: absolute;
+  bottom: 12px !important;
+  left: 0;
+  width: 100%;
+  display: block !important;
+  z-index: 10;
+}
+
+#certification .swiper-container .swiper-pagination-bullet {
+  margin: 0 4px;
+}
+
+#certification .swiper-container .swiper-pagination-bullet-active {
+  background: var(--bs-primary);
+}
+
+.projects-swiper .swiper-wrapper,
+.earlier-work-swiper .swiper-wrapper {
+  transition-property: transform, height;
+}
+
+.projects-swiper .swiper-slide,
+.earlier-work-swiper .swiper-slide {
+  height: auto;
+}
+
+#projects .projects-pagination,
+#projects .earlier-work-pagination {
+  position: static;
+  width: 100%;
+}
+
+#utils .utils-pagination {
+  --swiper-pagination-bullet-horizontal-gap: 0.375rem;
+  position: static;
+  width: 100%;
+  text-align: center;
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  #certification .swiper-container {
+    padding: 10px 35px 65px;
+  }
+
+  #certification .swiper-container .swiper-button-prev,
+  #certification .swiper-container .swiper-button-next {
+    width: 32px;
+    height: 32px;
+  }
+
+  #certification .swiper-container .swiper-button-prev::after,
+  #certification .swiper-container .swiper-button-next::after {
+    font-size: 14px;
+  }
+}

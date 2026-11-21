@@ -127,9 +127,9 @@ function DateTime() {
 
         {/* Date details */}
         <dl className="utility-details mb-0">
-          <div><dt>Day</dt><dd>{format({ weekday: "long" })}</dd></div>
-          <div><dt>Date</dt><dd>{format({ day: "numeric", month: "long", year: "numeric" })}</dd></div>
-          <div><dt>Timezone</dt><dd>{selected.timezone}</dd></div>
+          <div className="d-flex justify-content-between flex-wrap flex-sm-nowrap"><dt>Day</dt><dd className="text-start text-sm-end">{format({ weekday: "long" })}</dd></div>
+          <div className="d-flex justify-content-between flex-wrap flex-sm-nowrap"><dt>Date</dt><dd className="text-start text-sm-end">{format({ day: "numeric", month: "long", year: "numeric" })}</dd></div>
+          <div className="d-flex justify-content-between flex-wrap flex-sm-nowrap"><dt>Timezone</dt><dd className="text-start text-sm-end">{selected.timezone}</dd></div>
         </dl>
       </div>
     </article>

@@ -1,0 +1,39 @@
+/* ==========================================
+   INTERACTIONS AND HOVER STATES
+========================================== */
+
+.zoomInOut {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease !important;
+}
+
+@media (hover: hover) {
+  .btn.zoomInOut:hover {
+    transform: translateY(-1px) scale(1.02) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22) !important;
+  }
+
+  [data-bs-theme="dark"] .btn.zoomInOut:hover {
+    box-shadow: 0 8px 22px rgba(255, 255, 255, 0.25) !important;
+  }
+}
+
+@media (hover: hover) {
+  .zoomInOut:hover {
+    transform: scale(1.02) !important;
+  }
+
+  main .card.zoomInOut:hover {
+    transform: translateY(-2px) !important;
+    border-color: rgba(var(--bs-primary-rgb), 0.35);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  footer.zoomInOut:hover {
+    transform: none !important;
+  }
+}
+
+[data-bs-theme="dark"] main .card.zoomInOut:hover {
+  border-color: rgba(var(--bs-primary-rgb), 0.55);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}

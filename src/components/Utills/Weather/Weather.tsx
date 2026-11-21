@@ -163,9 +163,9 @@ function Weather() {
             <p className="fw-semibold mb-3">{info.description}</p>
 
             <dl className="utility-details mb-0">
-              <div><dt><i className="fa-solid fa-temperature-half me-2"></i>Feels like</dt><dd>{current.apparent_temperature}°C</dd></div>
-              <div><dt><i className="fa-solid fa-droplet me-2"></i>Humidity</dt><dd>{current.relative_humidity_2m}%</dd></div>
-              <div><dt><i className="fa-solid fa-wind me-2"></i>Wind</dt><dd>{current.wind_speed_10m} km/h</dd></div>
+              <div className="d-flex justify-content-between flex-wrap flex-sm-nowrap"><dt><i className="fa-solid fa-temperature-half me-2"></i>Feels like</dt><dd className="text-start text-sm-end">{current.apparent_temperature}°C</dd></div>
+              <div className="d-flex justify-content-between flex-wrap flex-sm-nowrap"><dt><i className="fa-solid fa-droplet me-2"></i>Humidity</dt><dd className="text-start text-sm-end">{current.relative_humidity_2m}%</dd></div>
+              <div className="d-flex justify-content-between flex-wrap flex-sm-nowrap"><dt><i className="fa-solid fa-wind me-2"></i>Wind</dt><dd className="text-start text-sm-end">{current.wind_speed_10m} km/h</dd></div>
             </dl>
           </div>
         )}

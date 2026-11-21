@@ -9,7 +9,7 @@ function Soft() {
                                 <div className="row row-cols-1 row-cols-md-3 g-4">
                                     <div className="col skill-group">
                                         <h6 className="text-primary fw-bold mb-2"><i className="fa-solid fa-book me-1"></i>Learning &amp; Growth</h6>
-                                        <ul className="skill-tags">
+                                        <ul className="d-flex flex-wrap gap-2 mb-0 p-0 list-unstyled">
                                             <li><span className="skill-tag">Willingness to learn</span></li>
                                             <li><span className="skill-tag">Flexibility</span></li>
                                             <li><span className="skill-tag">Creativity</span></li>
@@ -17,7 +17,7 @@ function Soft() {
                                     </div>
                                     <div className="col skill-group">
                                         <h6 className="text-primary fw-bold mb-2"><i className="fa-solid fa-people-group me-1"></i>Collaboration</h6>
-                                        <ul className="skill-tags">
+                                        <ul className="d-flex flex-wrap gap-2 mb-0 p-0 list-unstyled">
                                             <li><span className="skill-tag">Teamwork</span></li>
                                             <li><span className="skill-tag">Empathy</span></li>
                                             <li><span className="skill-tag">Responsibility</span></li>
@@ -25,7 +25,7 @@ function Soft() {
                                     </div>
                                     <div className="col skill-group">
                                         <h6 className="text-primary fw-bold mb-2"><i className="fa-solid fa-briefcase me-1"></i>Work Habits</h6>
-                                        <ul className="skill-tags">
+                                        <ul className="d-flex flex-wrap gap-2 mb-0 p-0 list-unstyled">
                                             <li><span className="skill-tag">Time management</span></li>
                                             <li><span className="skill-tag">Attention to detail</span></li>
                                             <li><span className="skill-tag">Problem solving</span></li>

@@ -45,7 +45,7 @@ function Prediction() {
 
       <div className="card-body d-flex flex-column text-center">
         {/* Animated cookie */}
-        <div className="fortune-cookie-container mx-auto my-2">
+        <div className="fortune-cookie-container d-flex align-items-center justify-content-center mx-auto my-2">
           <img
               src="/assets/img/utils/fortune-cookie.webp"
               alt="Golden fortune cookie"
@@ -54,7 +54,7 @@ function Prediction() {
         </div>
 
         {/* Fortune message */}
-        <div className="prediction-box d-flex align-items-center my-3">
+        <div className="prediction-box d-flex align-items-center bg-body-tertiary my-3">
           <p key={loading ? "loading" : prediction} className={`utility-result mb-0 ${error ? "text-danger" : ""} ${revealed ? "fortune-reveal" : ""}`} role="status" aria-live="polite">
             {loading ? "Revealing your fortune..." : prediction}
           </p>
